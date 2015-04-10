@@ -1,1 +1,2 @@
 vim/.vimrc    text eol=lf
+*.lnk         binary
