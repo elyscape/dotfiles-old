@@ -35,6 +35,15 @@ Plug 'vim-scripts/restore_view.vim'
 
 call plug#end()
 
+if empty(glob('~/.vim/bundle/*'))
+  aug InstallPlug
+    au!
+    au VimEnter * PlugInstall
+    au VimEnter * source $MYVIMRC
+  aug END
+  finish
+endif
+
 set omnifunc=syntaxcomplete#Complete
 
 highlight comment ctermfg=cyan
