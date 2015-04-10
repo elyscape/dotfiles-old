@@ -11,40 +11,30 @@ set bg=dark
 set novisualbell
 set encoding=utf-8
 
-" turn off filetype until Vundle is done
-filetype off
+call plug#begin('~/.vim/bundle')
 
-" configure runtime path to include Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'airblade/vim-gitgutter'
+Plug 'bling/vim-airline'
+Plug 'elyscape/vim-winjumplist'
+Plug 'freeo/vim-kalisi'
+Plug 'godlygeek/tabular'
+Plug 'mbbill/undotree'
+Plug 'rhysd/clever-f.vim'
+Plug 'rodjek/vim-puppet'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/matchit.zip'
+Plug 'vim-scripts/restore_view.vim'
 
-" Let Vundle manage itself
-Plugin 'gmarik/Vundle.vim'
+call plug#end()
 
-Plugin 'airblade/vim-gitgutter'
-Plugin 'bling/vim-airline'
-Plugin 'elyscape/vim-winjumplist'
-Plugin 'freeo/vim-kalisi'
-Plugin 'godlygeek/tabular'
-Plugin 'mbbill/undotree'
-Plugin 'rhysd/clever-f.vim'
-Plugin 'rodjek/vim-puppet'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/restore_view.vim'
-
-call vundle#end()
-
-syntax on
-filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
 highlight comment ctermfg=cyan

@@ -2,3 +2,4 @@
 tags
 vim/.vim/view/
 vim/.vim/bundle/
+vim/.vim/autoload/plug.vim
