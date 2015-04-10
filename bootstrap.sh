@@ -58,7 +58,7 @@ if [ "$OS" = 'Windows_NT' ]; then
   exit 0
 fi
 
-if ! ( which -s stow ); then
+if ! ( which stow >/dev/null 2>&1 ); then
   echo "Please install GNU Stow before running this script."
   exit 1
 fi
