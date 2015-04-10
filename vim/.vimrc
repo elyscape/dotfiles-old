@@ -1,0 +1,246 @@
+if has('win32')
+  let &rtp = substitute(&rtp, $HOME.'/vimfiles', $HOME.'/.vim', 'g')
+endif
+
+set viewdir=~/.vim/view
+
+set fo=tcq
+set nocompatible
+set modeline
+set bg=dark
+set novisualbell
+set encoding=utf-8
+
+" turn off filetype until Vundle is done
+filetype off
+
+" configure runtime path to include Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let Vundle manage itself
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bling/vim-airline'
+Plugin 'elyscape/vim-winjumplist'
+Plugin 'freeo/vim-kalisi'
+Plugin 'godlygeek/tabular'
+Plugin 'mbbill/undotree'
+Plugin 'rhysd/clever-f.vim'
+Plugin 'rodjek/vim-puppet'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'vim-scripts/restore_view.vim'
+
+call vundle#end()
+
+syntax on
+filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
+
+highlight comment ctermfg=cyan
+
+set tabstop=2
+set expandtab
+set softtabstop=2
+set shiftwidth=2
+
+set selection=exclusive
+set selectmode=mouse,key
+set keymodel=startsel
+
+if has('win32') && match($PATH, '\cC:\\Program Files (x86)\\Git\\bin\\\?') == -1
+  let $PATH .= ';C:\Program Files (x86)\Git\bin\'
+endif
+
+if has('gui_running')
+  set guioptions-=T   " disable toolbar
+  set bg=light
+  colorscheme kalisi
+  set lines=40 columns=108 linespace=0
+  if has('gui_win32')
+    set guifont=Consolas_for_Powerline:h10:cANSI
+    let s:heights=split(system("wmic path Win32_VideoController get CurrentVerticalResolution /value | sed '/=/!d'"))
+    for height in s:heights
+      if height[26:] != '' && height[26:] >= 1000
+        set guifont=Consolas_for_Powerline:h11:cANSI
+      endif
+    endfor
+    let s:symbols=1
+    if has('directx')
+      set renderoptions=type:directx,taamode:0,renmode:0
+    endif
+  endif
+  if has('gui_macvim')
+    set guifont=Consolas\ for\ Powerline:h11
+    let s:symbols=1
+  endif
+  if exists('s:symbols')
+    let g:airline_symbols = {}
+    let g:airline_left_sep = "\u2b80"
+    let g:airline_left_alt_sep = "\u2b81"
+    let g:airline_right_sep = "\u2b82"
+    let g:airline_right_alt_sep = "\u2b83"
+    let g:airline_symbols.branch = "\u2b60"
+    let g:airline_symbols.readonly = "\u2b64"
+    let g:airline_symbols.linenr = "\u2b61"
+  endif
+endif
+
+" enable 256 colors in ConEmu on Windows
+if has('win32') && !has('gui_running') && $ConEmuANSI == 'ON'
+    set term=xterm
+    set t_Co=256
+    let &t_AB="\e[48;5;%dm"
+    let &t_AF="\e[38;5;%dm"
+endif
+
+if &t_Co == 256
+  colors kalisi
+endif
+
+highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
+match LiteralTabs /\s\  /
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$/
+
+set list
+set listchars=tab:>\ ,extends:>,precedes:<,nbsp:+
+
+set scrolloff=3
+set undofile
+
+set ignorecase
+set smartcase
+set gdefault
+set showmatch
+set hlsearch
+
+set diffopt=filler,vertical
+
+nmap <Leader><Space> :noh<CR><Plug>(clever-f-reset)
+nnoremap <Tab> %
+vnoremap <Tab> %
+
+set wrap
+
+nnoremap j gj
+nnoremap k gk
+
+nnoremap ; :
+
+set clipboard=unnamed
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+set viewoptions=folds,cursor,slash,unix
+let g:skipview_files = ['\.vim$', 'vimrc$',
+      \ '\.git[/\\]\(.*[/\\]\)\?COMMIT_EDITMSG$',
+      \ '\.git[/\\]\(.*[/\\]\)\?MERGE_MSG$',
+      \ '\.git[/\\]\(.*[/\\]\)\?TAG_EDITMSG$',
+      \ 'git-rebase-todo$',
+      \ '\.diff$',
+      \ '^/private/', '^/tmp/', '[/\\]Temp[/\\]']
+
+set nofoldenable
+set foldmethod=indent
+
+set foldlevelstart=0
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Refocus folds
+nnoremap <Leader>z zMzvzz
+
+" Make zO recursively open whatever top level fold we're in,
+" no matter where the cursor happens to be.
+nnoremap zO zCzO
+
+function! MyFoldText()
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '… '
+endfunction
+set foldtext=MyFoldText()
+
+let g:syntastic_puppet_puppetlint_args = "--no-class_inherits_from_params_class-check --no-80chars-check"
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+nnoremap ln :lne<CR>
+nnoremap lN :lNe<CR>
+nnoremap lo :lop<CR>
+nnoremap lc :lcl<CR>
+
+nnoremap <F5> :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle=1
+
+nnoremap <F3> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrows=1
+
+au FileType git* setlocal noundofile
+au BufNewFile,BufRead *.git/{,modules/**/}TAG_EDITMSG setlocal textwidth=80
+au FileType diff setlocal noundofile
+
+set number
+set relativenumber
+
+let g:clever_f_smart_case = 1
+
+function! Untab()
+  let curline = getline('.')
+  let curcol = col('.')
+  let curchar = curline[curcol - 1]
+  let prevchar = curline[curcol - 2]
+  if curcol > 1 && (prevchar == " " || prevchar == "\t") ||
+        \(curcol == len(curline) && curchar == " " || curchar == "\t")
+    call feedkeys("\<BS>")
+  endif
+endfunction
+
+imap <S-Tab> <C-O>:call Untab()<CR>
+
+let g:airline#extensions#branch#format = 1
+
+set updatetime=1000
+
+
+function! DisableUndofileWhenTemp()
+  let tempdir = expand($TEMP)
+  if strlen(tempdir) == 0
+    let tempdir = expand($TMPDIR)
+  endif
+  let tempdir = resolve(tempdir)
+  let templen = strlen(tempdir) - 1
+  if tempdir ==? resolve(expand('%:p'))[0:templen]
+    setlocal noundofile
+    setlocal noswapfile
+  endif
+endfunction
+au BufNewFile,BufRead * call DisableUndofileWhenTemp()
+
+set viminfo+=n~/.viminfo
