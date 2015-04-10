@@ -1,0 +1,44 @@
+# vim: ft=sh
+
+alias chmox=chmod
+
+alias ga='git add'
+alias gap='git add -p'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gcac='git commit --amend -CHEAD'
+alias gcam='git commit --amend -m'
+alias gcd='cd "$(git rev-parse --show-toplevel)"'
+alias gcm='git commit -m'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdt='git difftool'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+alias gl='git log'
+alias glf='git log FETCH_HEAD'
+alias gm='git merge'
+alias gmt='git mergetool'
+alias gp='git pull'
+alias gpf='git push --force'
+alias gpush='git push'
+alias gr='git reset'
+alias grb='git rebase'
+alias grh='git reset --hard'
+alias gs='git status'
+alias gss='git -c status.submodulesummary=true status'
+
+# TODO: Look into http://superuser.com/a/437508 for completion of aliases
+
+if [ `uname -s` = 'Darwin' ]; then
+  alias start=open
+  alias pstree='pstree -g 3'
+  alias ls='ls -F -G'
+else
+  alias ls='ls -F --color=auto --show-control-chars'
+fi
+alias ll='ls -l'
+alias l.='ls -d .*'
+alias ll.='ll -d .*'
+
+alias plint='puppet-lint --no-class_inherits_from_params_class-check --no-80chars-check'
