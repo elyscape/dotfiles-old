@@ -1,5 +1,12 @@
 # vim: ft=sh
 
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+
+PATH=$PATH:$HOME/bin
+export PATH
+
 [ -f ~/.aliases ] && . ~/.aliases
 
 shopt -s no_empty_cmd_completion
