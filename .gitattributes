@@ -1,2 +1,4 @@
-vim/.vimrc    text eol=lf
-*.lnk         binary
+vim/.vimrc              text eol=lf
+*.lnk                   binary
+git/.config/git/config  text eol=lf
+git/.config/git/ignore  -text

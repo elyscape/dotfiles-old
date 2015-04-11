@@ -1,0 +1,20 @@
+; vim: noet
+[user]
+	name = Eli Young
+	email = elyscape@gmail.com
+[diff]
+	tool = p4merge
+[merge]
+	tool = p4merge
+	keepBackup = false
+	defaultToUpstream = true
+[mergetool]
+	keepTemporaries = false
+[push]
+	default = simple
+[fetch]
+	prune = true
+[status]
+	showUntrackedFiles = all
+[log]
+	mailmap = true
