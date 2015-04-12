@@ -13,6 +13,10 @@ set bg=dark
 set novisualbell
 set encoding=utf-8
 
+if has('win32') && match($PATH, '\cC:\\Program Files (x86)\\Git\\bin\\\?') == -1
+  let $PATH .= ';C:\Program Files (x86)\Git\bin\'
+endif
+
 call plug#begin('~/.vim/bundle')
 
 Plug 'airblade/vim-gitgutter'
@@ -58,10 +62,6 @@ set shiftwidth=2
 set selection=exclusive
 set selectmode=mouse,key
 set keymodel=startsel
-
-if has('win32') && match($PATH, '\cC:\\Program Files (x86)\\Git\\bin\\\?') == -1
-  let $PATH .= ';C:\Program Files (x86)\Git\bin\'
-endif
 
 if has('gui_running')
   set guioptions-=T   " disable toolbar
