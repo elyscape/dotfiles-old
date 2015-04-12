@@ -1,5 +1,7 @@
 if has('win32')
-  let &rtp = substitute(&rtp, $HOME.'/vimfiles', $HOME.'/.vim', 'g')
+  let home=escape($HOME, '\')
+  let &rtp = substitute(&rtp, '\V'.home.'/vimfiles', home.'/.vim', 'g')
+  unlet home
 endif
 
 set viewdir=~/.vim/view
