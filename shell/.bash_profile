@@ -10,6 +10,7 @@ export PATH
 [ -f ~/.aliases ] && . ~/.aliases
 
 shopt -s no_empty_cmd_completion
+set -o ignoreeof
 
 which gvim >/dev/null 2>&1 && export EDITOR=gvim\ -f
 
