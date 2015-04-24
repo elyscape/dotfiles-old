@@ -7,8 +7,6 @@ fi
 PATH=$PATH:$HOME/bin
 export PATH
 
-[ -f ~/.aliases ] && . ~/.aliases
-
 shopt -s no_empty_cmd_completion
 set -o ignoreeof
 
@@ -71,3 +69,5 @@ elif [ "$OS" = 'Windows_NT' ]; then
 
   unset env
 fi
+
+[ -f ~/.aliases ] && . ~/.aliases
