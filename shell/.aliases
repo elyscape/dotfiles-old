@@ -34,12 +34,17 @@ alias gss='git -c status.submodulesummary=true status'
 if [ "$( uname -s )" = 'Darwin' ]; then
   alias start=open
   alias pstree='pstree -g 3'
-  alias ls='ls -F -G'
+  lsoptions='-F -G'
 else
-  alias ls='ls -F --color=auto --show-control-chars'
+  lsoptions='-F --color=auto --show-control-chars'
 fi
-alias ll='ls -l'
-alias l.='ls -d .*'
-alias ll.='ll -d .*'
+# shellcheck disable=SC2139
+{
+  alias ls="\ls $lsoptions"
+  alias ll="\ls $lsoptions -l"
+  alias l.="\ls $lsoptions -d .*"
+  alias ll.="\ls $lsoptions -l -d .*"
+}
+unset lsoptions
 
 alias plint='puppet-lint --no-class_inherits_from_params_class-check --no-80chars-check'
