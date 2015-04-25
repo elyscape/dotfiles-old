@@ -92,7 +92,8 @@ function alias_completion {
         # force loading of completions for the aliased command
         eval "$completion_loader $alias_cmd"
         # 124 means completion loader was successful
-        [[  $? -eq 124 ]] || continue
+        [[ $? -eq 124 ]] || continue
+        completions+=($alias_cmd)
       else
         continue
       fi
