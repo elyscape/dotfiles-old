@@ -174,15 +174,23 @@ nnoremap zO zCzO
 function! MyFoldText()
     let line = getline(v:foldstart)
 
+    redir => signs
+      silent execute 'sign place buffer=' . bufnr('%')
+    redir END
+    let signcolwidth = 0
+    if len(split(signs, '\n')) > 2
+      let signcolwidth = 2
+    endif
+
     let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
+    let windowwidth = winwidth(0) - nucolwidth - signcolwidth - 3
     let foldedlinecount = v:foldend - v:foldstart
 
     " expand tabs into spaces
     let onetab = strpart('          ', 0, &tabstop)
     let line = substitute(line, '\t', onetab, 'g')
 
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let line = strpart(line, 0, windowwidth - 2 - len(foldedlinecount))
     let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '… '
 endfunction
