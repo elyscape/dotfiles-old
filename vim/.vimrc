@@ -239,16 +239,19 @@ set updatetime=1000
 
 
 function! DisableUndofileWhenTemp()
-  let tempdir = expand($TEMP)
-  if strlen(tempdir) == 0
-    let tempdir = expand($TMPDIR)
-  endif
-  let tempdir = resolve(tempdir)
-  let templen = strlen(tempdir) - 1
-  if tempdir ==? resolve(expand('%:p'))[0:templen]
-    setlocal noundofile
-    setlocal noswapfile
-  endif
+  let tempdirs = [ expand($TEMP), expand($TMP), expand($TMPDIR) ]
+  for tempdir in tempdirs
+    if strlen(tempdir) == 0
+      continue
+    endif
+    let tempdir = resolve(tempdir)
+    let templen = strlen(tempdir) - 1
+    if tempdir ==? resolve(expand('%:p'))[0:templen]
+      setlocal noundofile
+      setlocal noswapfile
+      break
+    endif
+  endfor
 endfunction
 au BufNewFile,BufRead * call DisableUndofileWhenTemp()
 
