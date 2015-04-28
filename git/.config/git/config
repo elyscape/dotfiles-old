@@ -10,6 +10,8 @@
 	defaultToUpstream = true
 [mergetool]
 	keepTemporaries = false
+[rebase]
+	autosquash = true
 [push]
 	default = simple
 [fetch]
