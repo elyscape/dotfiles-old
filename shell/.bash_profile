@@ -7,4 +7,6 @@ fi
 PATH=$PATH:$HOME/bin
 export PATH
 
+export LESS="-I $LESS"
+
 which gvim >/dev/null 2>&1 && export EDITOR=gvim\ -f
