@@ -4,6 +4,10 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 
+if [ -f ~/.bash_profile.local ]; then
+  . ~/.bash_profile.local
+fi
+
 PATH=$PATH:$HOME/bin
 export PATH
 
