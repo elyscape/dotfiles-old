@@ -24,7 +24,9 @@ alias gpf='git push --force'
 alias gpt='git push --tags'
 alias gpush='git push'
 alias gpushd='pushd "$( git rev-parse --show-toplevel )"'
-alias gpushup='git push -u origin HEAD'
+function gpushup {
+  git push -u "${1-origin}" HEAD
+}
 alias gr='git reset'
 alias grb='git rebase'
 alias grh='git reset --hard'
