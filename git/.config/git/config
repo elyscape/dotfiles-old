@@ -16,8 +16,6 @@
 	default = simple
 [fetch]
 	prune = true
-[status]
-	showUntrackedFiles = all
 [log]
 	mailmap = true
 [alias]
