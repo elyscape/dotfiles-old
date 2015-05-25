@@ -13,6 +13,8 @@ export PATH
 
 which gvim >/dev/null 2>&1 && export EDITOR=gvim\ -f
 
+which rbenv >/dev/null 2>&1 && eval "$( rbenv init - )"
+
 if [ "$OS" = 'Windows_NT' ]; then
   # From https://help.github.com/articles/working-with-ssh-key-passphrases/
   # Note: ~/.ssh/environment should not be used, as it
