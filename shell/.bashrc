@@ -18,6 +18,12 @@ if [ "$( uname -s )" = 'Darwin' ]; then
     . "$( brew --prefix )/share/bash-completion/bash_completion"
   fi
 
+  if [ -f "$( brew --prefix nvm )/nvm.sh" ]; then
+    export NVM_DIR=~/.nvm
+    source "$( brew --prefix nvm )/nvm.sh"
+    which npm >/dev/null 2>&1 && source <(npm completion)
+  fi
+
   export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 fi
 
