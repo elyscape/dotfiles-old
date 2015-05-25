@@ -19,3 +19,6 @@
 	mailmap = true
 [alias]
 	whitespace = !git --paginate diff-tree --check $(git hash-object -t tree /dev/null) HEAD
+[advice]
+	resolveConflict = false
+	statusHints = false
