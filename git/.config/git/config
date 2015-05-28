@@ -25,6 +25,7 @@
 	cm = commit -m
 	dc = diff --cached
 	dt = difftool
+	dtc = difftool --cached
 	fa = fetch --all
 	lf = log FETCH_HEAD
 	mt = mergetool
