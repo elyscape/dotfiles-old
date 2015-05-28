@@ -1,11 +1,10 @@
 $include /etc/inputrc
+$include ~/.inputrc.local
 
 set bell-style none
 set colored-stats on
-set completion-ignore-case on
 set mark-symlinked-directories on
 set match-hidden-files off
-set show-all-if-ambiguous on
 
 $if Bash
   " ": magic-space
