@@ -18,6 +18,22 @@
 [log]
 	mailmap = true
 [alias]
+	ap = add -p
+	ca = commit --amend
+	cac = commit --amend -CHEAD
+	cam = commit --amend -m
+	cm = commit -m
+	dc = diff --cached
+	dt = difftool
+	fa = fetch --all
+	lf = log FETCH_HEAD
+	mt = mergetool
+	pf = push --force
+	pt = push --tags
+	pushup = !git push -u "${1-origin}" HEAD
+	rb = rebase
+	rh = reset --hard
+	ss = -c status.submodulesummary=true status
 	whitespace = !git --paginate diff-tree --check $(git hash-object -t tree /dev/null) HEAD
 [advice]
 	resolveConflict = false
