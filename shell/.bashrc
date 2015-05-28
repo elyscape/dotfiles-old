@@ -11,8 +11,6 @@ fi
 shopt -s no_empty_cmd_completion
 set -o ignoreeof
 
-[ -f /etc/inputrc ] && bind -f /etc/inputrc
-
 if [ "$( uname -s )" = 'Darwin' ]; then
   if [ -f "$( brew --prefix )/share/bash-completion/bash_completion" ]; then
     . "$( brew --prefix )/share/bash-completion/bash_completion"
