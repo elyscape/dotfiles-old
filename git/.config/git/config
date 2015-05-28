@@ -31,7 +31,7 @@
 	mt = mergetool
 	pf = push --force
 	pt = push --tags
-	pushup = !git push -u "${1-origin}" HEAD
+	pushup = !"git push -u \"${1-origin}\" HEAD;:"
 	rb = rebase
 	rh = reset --hard
 	ss = -c status.submodulesummary=true status
