@@ -11,7 +11,8 @@ fi
 PATH=$PATH:$HOME/bin
 export PATH
 
-which gvim >/dev/null 2>&1 && export EDITOR=gvim\ -f
+which gvim >/dev/null 2>&1 && EDITOR=gvim\ -f || EDITOR=vim
+export EDITOR
 
 which rbenv >/dev/null 2>&1 && eval "$( rbenv init - )"
 
