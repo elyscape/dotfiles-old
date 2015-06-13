@@ -16,6 +16,8 @@ export EDITOR
 
 which rbenv >/dev/null 2>&1 && eval "$( rbenv init - )"
 
+export HISTCONTROL=ignoredups
+
 if [ "$OS" = 'Windows_NT' ]; then
   # From https://help.github.com/articles/working-with-ssh-key-passphrases/
   # Note: ~/.ssh/environment should not be used, as it
