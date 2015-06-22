@@ -41,6 +41,9 @@ Plug 'vim-scripts/restore_view.vim'
 
 call plug#end()
 
+nmap <Leader>pu :PlugUpdate<CR>
+nmap <Leader>pg :PlugUpgrade<CR>
+
 if empty(glob('~/.vim/bundle/*'))
   aug InstallPlug
     au!
