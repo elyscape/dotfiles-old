@@ -31,6 +31,7 @@
 	mt = mergetool
 	pf = push --force
 	pt = push --tags
+	pu = !"git pull upstream \"${1-$(git rev-parse --abbrev-ref HEAD)}\";:"
 	pushup = !"git push -u \"${1-origin}\" HEAD;:"
 	rb = rebase
 	rh = reset --hard
