@@ -225,6 +225,7 @@ au FileType git* setlocal noundofile
 au FileType gitconfig setlocal noexpandtab shiftwidth=8 tabstop=8
 au BufNewFile,BufRead *.git/{,modules/**/}TAG_EDITMSG setlocal textwidth=80
 au FileType diff setlocal noundofile
+au BufNewFile,BufRead *.eyaml setf yaml
 
 set number
 set relativenumber
