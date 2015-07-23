@@ -15,6 +15,7 @@ which gvim >/dev/null 2>&1 && EDITOR=gvim\ -f || EDITOR=vim
 export EDITOR
 
 which rbenv >/dev/null 2>&1 && eval "$( rbenv init - )"
+which pyenv >/dev/null 2>&1 && eval "$( pyenv init - )"
 
 export HISTCONTROL=ignoredups
 
