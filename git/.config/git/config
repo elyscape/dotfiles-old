@@ -1,6 +1,8 @@
 [user]
 	name = Eli Young
 	email = elyscape@gmail.com
+[core]
+	editor = vim
 [diff]
 	tool = p4merge
 [merge]
