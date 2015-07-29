@@ -120,9 +120,9 @@ if &t_Co == 256
 endif
 
 highlight MixedTabs ctermbg=darkgreen guibg=darkgreen
-match MixedTabs /\s*\( \t\|\t \)\s*/
+call matchadd('MixedTabs', '\s*\( \t\|\t \)\s*')
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-match ExtraWhitespace /\s\+$/
+call matchadd('ExtraWhitespace', '\s\+$')
 
 set list
 set listchars=tab:>\ ,extends:>,precedes:<,nbsp:+
