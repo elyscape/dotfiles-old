@@ -119,8 +119,8 @@ if &t_Co == 256
   colors kalisi
 endif
 
-highlight LiteralTabs ctermbg=darkgreen guibg=darkgreen
-match LiteralTabs /\s\  /
+highlight MixedTabs ctermbg=darkgreen guibg=darkgreen
+match MixedTabs /\s*\( \t\|\t \)\s*/
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$/
 
