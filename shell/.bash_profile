@@ -16,6 +16,7 @@ export EDITOR
 
 which rbenv >/dev/null 2>&1 && eval "$( rbenv init - )"
 which pyenv >/dev/null 2>&1 && eval "$( pyenv init - )"
+which pyenv-virtualenv-init >/dev/null 2>&1 && eval "$(pyenv virtualenv-init -)" && export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 export HISTCONTROL=ignoredups
 
