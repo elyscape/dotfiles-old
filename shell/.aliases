@@ -33,6 +33,8 @@ alias grh='git rh'
 alias gs='git status'
 alias gss='git ss'
 
+alias title='echo -en "\033]0;\007"'
+
 if [ "$( uname -s )" = 'Darwin' ]; then
   alias start=open
   alias pstree='pstree -g 3'
