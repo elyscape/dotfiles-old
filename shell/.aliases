@@ -38,6 +38,7 @@ alias title='echo -en "\033]0;\007"'
 if [ "$( uname -s )" = 'Darwin' ]; then
   alias start=open
   alias pstree='pstree -g 3'
+  alias brewup='brew update && brew upgrade --all'
   lsoptions='-F -G'
 else
   lsoptions='-F --color=auto --show-control-chars'
