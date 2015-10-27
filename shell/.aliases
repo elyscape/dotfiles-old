@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+[ -f ~/.aliases.local ] && . ~/.aliases.local
+
 alias chmox=chmod
 
 alias ga='git add'
