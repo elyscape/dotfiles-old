@@ -25,6 +25,7 @@
 	cac = commit --amend -CHEAD
 	cam = commit --amend -m
 	cm = commit -m
+	co = checkout
 	dc = diff --cached
 	dt = difftool
 	dtc = difftool --cached
