@@ -26,6 +26,7 @@
 	cam = commit --amend -m
 	cm = commit -m
 	co = checkout
+	cob = checkout -b
 	dc = diff --cached
 	dt = difftool
 	dtc = difftool --cached
