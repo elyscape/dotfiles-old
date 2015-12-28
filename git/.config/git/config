@@ -21,6 +21,7 @@
 	mailmap = true
 [alias]
 	ap = add -p
+	bd = branch -d
 	ca = commit --amend
 	cac = commit --amend -CHEAD
 	cam = commit --amend -m
