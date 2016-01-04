@@ -125,6 +125,7 @@ highlight MixedTabs ctermbg=darkgreen guibg=darkgreen
 call matchadd('MixedTabs', '\s*\( \t\|\t \)\s*')
 highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 call matchadd('ExtraWhitespace', '\s\+$')
+nmap <Leader>cw :s/\s\+$//<CR>
 
 set list
 set listchars=tab:>\ ,extends:>,precedes:<,nbsp:+
