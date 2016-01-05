@@ -25,6 +25,7 @@
 	ca = commit --amend
 	cac = commit --amend -CHEAD
 	cam = commit --amend -m
+	cf = commit --fixup
 	cm = commit -m
 	co = checkout
 	cob = checkout -b
