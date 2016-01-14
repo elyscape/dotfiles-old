@@ -20,8 +20,10 @@
 [log]
 	mailmap = true
 [alias]
+	ai = add --intent-to-add
 	ap = add -p
 	bd = branch -d
+	bD = branch -D
 	ca = commit --amend
 	cac = commit --amend -CHEAD
 	cam = commit --amend -m

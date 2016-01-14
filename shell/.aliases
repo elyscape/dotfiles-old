@@ -5,8 +5,10 @@
 alias chmox=chmod
 
 alias ga='git add'
+alias gai='git ai'
 alias gap='git ap'
 alias gbd='git bd'
+alias gbD='git bD'
 alias gc='git commit'
 alias gca='git ca'
 alias gcac='git cac'
