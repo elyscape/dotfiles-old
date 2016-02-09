@@ -254,6 +254,7 @@ let g:airline#extensions#branch#format = 1
 
 set updatetime=1000
 
+let g:NERDSpaceDelims=1
 
 function! DisableUndofileWhenTemp()
   let tempdirs = [ expand($TEMP), expand($TMP), expand($TMPDIR) ]
