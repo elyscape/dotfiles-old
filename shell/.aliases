@@ -48,10 +48,16 @@ if [ "$( uname -s )" = 'Darwin' ]; then
   alias start=open
   alias pstree='pstree -g 3'
   alias brewup='brew update && brew upgrade --all'
-  lsoptions='-F -G'
-else
-  lsoptions='-F --color=auto --show-control-chars'
 fi
+
+# shellcheck disable=SC2010
+{
+  if [ "$( ls --help 2>&1 | grep 'GNU' -c )" -gt 0 ]; then
+    lsoptions='-F --color=auto --show-control-chars'
+  else
+    lsoptions='-F -G'
+  fi
+}
 # shellcheck disable=SC2139
 {
   alias ls="\ls $lsoptions"
