@@ -69,7 +69,7 @@ unset lsoptions
 
 alias plint='puppet-lint --no-class_inherits_from_params_class-check --no-80chars-check'
 
-[ "$BASH_VERSINFO" -ge 4 ] || return 0
+[ "${BASH_VERSINFO[0]}" -ge 4 ] || return 0
 
 # Based on http://superuser.com/a/437508
 # Automatically add completion for all aliases to commands having completion functions
