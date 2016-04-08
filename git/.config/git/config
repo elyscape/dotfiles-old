@@ -37,7 +37,7 @@
 	fa = fetch --all
 	lf = log FETCH_HEAD
 	mt = mergetool
-	pf = push --force
+	pf = push --force-with-lease
 	pt = push --tags
 	pu = !"git pull upstream \"${1-$(git rev-parse --abbrev-ref HEAD)}\";:"
 	pushup = !"git push -u \"${1-origin}\" HEAD;:"
