@@ -43,6 +43,7 @@
 	pushup = !"git push -u \"${1-origin}\" HEAD;:"
 	rau = remote add upstream
 	rb = rebase
+	rbu = !"git rebase upstream/\"${1-$(git rev-parse --abbrev-ref HEAD)}\";:"
 	rh = reset --hard
 	ss = -c status.submodulesummary=true status
 	whitespace = !git --paginate diff-tree --check $(git hash-object -t tree /dev/null) HEAD
