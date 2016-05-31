@@ -25,7 +25,7 @@ if [ "$( uname -s )" = 'Darwin' ]; then
     which npm >/dev/null 2>&1 && source <(npm completion)
   fi
 
-  export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+  export HOMEBREW_CASK_OPTS='--caskroom=/usr/local/Caskroom'
 fi
 
 [ -f ~/.aliases ] && . ~/.aliases
