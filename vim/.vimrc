@@ -211,6 +211,7 @@ endfunction
 set foldtext=MyFoldText()
 
 let g:syntastic_puppet_puppetlint_args = "--no-class_inherits_from_params_class-check --no-80chars-check"
+let g:syntastic_sh_shellcheck_args = "-e SC1090,SC1091"
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_always_populate_loc_list = 1
