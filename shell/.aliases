@@ -70,10 +70,10 @@ fi
 }
 # shellcheck disable=SC2139
 {
-  alias ls="command ls $lsoptions"
-  alias ll="command ls $lsoptions -l"
-  alias l.="command ls $lsoptions -d .*"
-  alias ll.="command ls $lsoptions -l -d .*"
+  alias ls="\\ls $lsoptions"
+  alias ll="\\ls $lsoptions -l"
+  alias l.="\\ls $lsoptions -d .*"
+  alias ll.="\\ls $lsoptions -l -d .*"
 }
 unset lsoptions
 
