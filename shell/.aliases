@@ -45,6 +45,15 @@ alias gss='git ss'
 
 alias title='echo -en "\033]0;\007"'
 
+function lfile {
+  if [ "$#" -lt 1 ]; then
+    echo 'usage: lfile command'
+    return 64
+  fi
+
+  "$@" "$(command ls | tail -n 1)"
+}
+
 if [ "$( uname -s )" = 'Darwin' ]; then
   alias start=open
   alias pstree='pstree -g 3'
