@@ -20,6 +20,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'elyscape/vim-winjumplist'
 Plug 'freeo/vim-kalisi'
 Plug 'godlygeek/tabular'
@@ -30,6 +31,7 @@ Plug 'rodjek/vim-puppet'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
