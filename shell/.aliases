@@ -57,7 +57,7 @@ function lfile {
 if [ "$( uname -s )" = 'Darwin' ]; then
   alias start=open
   alias pstree='pstree -g 3'
-  alias brewup='brew upgrade --all'
+  alias brewup='brew upgrade'
 fi
 
 # shellcheck disable=SC2010
