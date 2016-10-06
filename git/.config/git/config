@@ -5,6 +5,7 @@
 	editor = vim
 [diff]
 	tool = p4merge
+	compactionHeuristic = true
 [merge]
 	tool = p4merge
 	keepBackup = false
