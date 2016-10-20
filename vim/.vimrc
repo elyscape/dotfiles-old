@@ -20,6 +20,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elyscape/vim-winjumplist'
 Plug 'freeo/vim-kalisi'
@@ -229,6 +230,8 @@ let g:undotree_SetFocusWhenToggle=1
 
 nnoremap <F3> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows=1
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 au FileType git* setlocal noundofile
 au FileType gitconfig setlocal noexpandtab shiftwidth=8 tabstop=8
