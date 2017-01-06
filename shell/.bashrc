@@ -8,7 +8,7 @@ if [ -f ~/.bashrc.local ]; then
   . ~/.bashrc.local
 fi
 
-shopt -s no_empty_cmd_completion
+shopt -s no_empty_cmd_completion histappend
 set -o ignoreeof
 
 # Allow forward history search with ^S
