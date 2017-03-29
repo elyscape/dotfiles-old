@@ -27,6 +27,7 @@ Plug 'freeo/vim-kalisi'
 Plug 'godlygeek/tabular'
 Plug 'kchmck/vim-coffee-script'
 Plug 'mbbill/undotree'
+Plug 'pangloss/vim-javascript'
 Plug 'rhysd/clever-f.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'scrooloose/nerdcommenter'
@@ -238,6 +239,7 @@ au FileType gitconfig,sh setlocal noexpandtab shiftwidth=8 tabstop=8 listchars+=
 au BufNewFile,BufRead *.git/{,modules/**/}TAG_EDITMSG setlocal textwidth=80
 au FileType diff setlocal noundofile
 au BufNewFile,BufRead *.eyaml setf yaml
+au FileType javascript setlocal foldmethod=syntax
 
 set number
 set relativenumber
