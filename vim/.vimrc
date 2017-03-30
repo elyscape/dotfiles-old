@@ -232,7 +232,7 @@ let g:undotree_SetFocusWhenToggle=1
 nnoremap <F3> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows=1
 
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', '.*\.git[\\/].*EDITMSG']
 
 au FileType git* setlocal noundofile
 au FileType gitconfig,sh setlocal noexpandtab shiftwidth=8 tabstop=8 listchars+=tab:\ \ 
