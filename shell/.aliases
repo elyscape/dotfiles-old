@@ -80,6 +80,8 @@ unset lsoptions
 
 alias plint='puppet-lint --no-class_inherits_from_params_class-check --no-80chars-check'
 
+alias nrun='npm run -s'
+
 [ "${BASH_VERSINFO[0]}" -ge 4 ] || return 0
 
 # Based on http://superuser.com/a/437508
