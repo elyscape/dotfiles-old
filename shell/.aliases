@@ -140,7 +140,7 @@ function alias_completion {
       if [[ "${compl_func#_$namespace::}" == "$compl_func" ]]; then
         local compl_wrapper="_${namespace}::${alias_name}"
           echo "function $compl_wrapper {
-            local comp_args=\"\${COMP_WORDS[@]:1}\"
+            local comp_args=(\"\${COMP_WORDS[@]:1}\")
             [[ \${#comp_args[@]} -eq 0 ]] && comp_args=('')
             (( COMP_CWORD += ${#alias_arg_words[@]} ))
             COMP_WORDS=($alias_cmd $alias_args \"\${comp_args[@]}\")
