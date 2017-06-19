@@ -58,6 +58,7 @@ function lfile {
 if [ "$( uname -s )" = 'Darwin' ]; then
   alias start=open
   alias pstree='pstree -g 3'
+  alias brwe=brew
   alias brewup='brew upgrade'
 fi
 
