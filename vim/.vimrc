@@ -32,7 +32,6 @@ Plug 'rhysd/clever-f.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -45,6 +44,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/restore_view.vim'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -214,15 +214,14 @@ function! MyFoldText()
 endfunction
 set foldtext=MyFoldText()
 
-let g:syntastic_puppet_puppetlint_args = "--no-class_inherits_from_params_class-check --no-80chars-check"
-let g:syntastic_sh_shellcheck_args = "-e SC1090,SC1091"
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-nnoremap ln :lne<CR>
-nnoremap lN :lNe<CR>
+let g:ale_fixers={
+\   'go': ['gofmt'],
+\}
+
+nmap <F8> <Plug>(ale_fix)
+
+nmap <silent>ln <Plug>(ale_next_wrap)
+nmap <silent>lN <Plug>(ale_previous_wrap)
 nnoremap lo :lop<CR>
 nnoremap lc :lcl<CR>
 
