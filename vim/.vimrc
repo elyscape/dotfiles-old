@@ -44,7 +44,11 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/restore_view.vim'
-Plug 'w0rp/ale'
+if v:version < 800
+  Plug 'vim-syntastic/syntastic'
+else
+  Plug 'w0rp/ale'
+endif
 
 call plug#end()
 
