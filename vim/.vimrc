@@ -238,11 +238,12 @@ let g:NERDTreeDirArrows=1
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', '.*\.git[\\/].*EDITMSG']
 
 au FileType git* setlocal noundofile
-au FileType gitconfig,sh setlocal noexpandtab shiftwidth=8 tabstop=8 listchars+=tab:\ \ 
+au FileType gitconfig,sh setlocal noexpandtab listchars+=tab:\ \  shiftwidth=8 tabstop=8
 au BufNewFile,BufRead *.git/{,modules/**/}TAG_EDITMSG setlocal textwidth=80
 au FileType diff setlocal noundofile
 au BufNewFile,BufRead *.eyaml setf yaml
 au FileType javascript setlocal foldmethod=syntax
+au FileType go setlocal noexpandtab listchars+=tab:\ \  shiftwidth=4 tabstop=4
 
 set number
 set relativenumber
