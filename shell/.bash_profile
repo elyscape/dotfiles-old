@@ -19,6 +19,8 @@ which pyenv >/dev/null 2>&1 && eval "$( pyenv init - )"
 which pyenv-virtualenv-init >/dev/null 2>&1 && eval "$(pyenv virtualenv-init -)" && export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 export HISTCONTROL=ignoreboth
+export HISTSIZE=-1
+export HISTTIMEFORMAT='%F %T '
 
 if [ "$OS" = 'Windows_NT' ]; then
   # From https://help.github.com/articles/working-with-ssh-key-passphrases/
