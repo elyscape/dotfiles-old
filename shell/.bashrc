@@ -15,15 +15,17 @@ set -o ignoreeof
 [[ $- == *i* ]] && stty -ixon
 
 if [ "$( uname -s )" = 'Darwin' ]; then
-  if [ -f "$( brew --prefix )/share/bash-completion/bash_completion" ]; then
-    . "$( brew --prefix )/share/bash-completion/bash_completion"
+  brew_prefix="$( brew --prefix )"
+  if [ -f "${brew_prefix}/share/bash-completion/bash_completion" ]; then
+    . "${brew_prefix}/share/bash-completion/bash_completion"
   fi
 
-  if [ -f "$( brew --prefix nvm )/nvm.sh" ]; then
+  if [ -f "${brew_prefix}/opt/nvm/nvm.sh" ]; then
     export NVM_DIR=~/.nvm
-    source "$( brew --prefix nvm )/nvm.sh"
+    source "${brew_prefix}/opt/nvm/nvm.sh"
     which npm >/dev/null 2>&1 && source <(npm completion)
   fi
+  unset brew_prefix
 fi
 
 [ -f ~/.aliases ] && . ~/.aliases
