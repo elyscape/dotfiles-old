@@ -280,7 +280,7 @@ imap <S-Tab> <C-O>:call Untab()<CR>
 
 let g:airline#extensions#branch#format = 1
 
-set updatetime=1000
+set updatetime=200
 
 let g:NERDSpaceDelims=1
 
