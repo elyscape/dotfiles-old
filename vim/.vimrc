@@ -17,6 +17,8 @@ if has('win32') && match($PATH, '\cC:\\Program Files (x86)\\Git\\bin\\\?') == -1
   let $PATH .= ';C:\Program Files (x86)\Git\bin\'
 endif
 
+let s:use_ale = v:version >= 800
+
 call plug#begin('~/.vim/bundle')
 
 Plug 'airblade/vim-gitgutter'
@@ -44,10 +46,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/matchit.zip'
 Plug 'vim-scripts/restore_view.vim'
-if v:version < 800
-  Plug 'vim-syntastic/syntastic'
-else
+if s:use_ale
   Plug 'w0rp/ale'
+else
+  Plug 'vim-syntastic/syntastic'
 endif
 
 call plug#end()
@@ -218,14 +220,26 @@ function! MyFoldText()
 endfunction
 set foldtext=MyFoldText()
 
-let g:ale_fixers={
-\   'go': ['gofmt'],
-\}
+if s:use_ale
+  let g:ale_fixers={
+  \   'go': ['gofmt'],
+  \}
 
-nmap <F8> <Plug>(ale_fix)
+  nmap <F8> <Plug>(ale_fix)
 
-nmap <silent>ln <Plug>(ale_next_wrap)
-nmap <silent>lN <Plug>(ale_previous_wrap)
+  nmap <silent>ln <Plug>(ale_next_wrap)
+  nmap <silent>lN <Plug>(ale_previous_wrap)
+else
+  let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+  let g:syntastic_aggregate_errors = 1
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+
+  nnoremap <silent>ln :lne<CR>
+  nnoremap <silent>lN :lNe<CR>
+endif
+
 nnoremap lo :lop<CR>
 nnoremap lc :lcl<CR>
 
