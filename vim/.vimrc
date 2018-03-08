@@ -228,8 +228,8 @@ if s:use_ale
 
   nmap <F8> <Plug>(ale_fix)
 
-  nmap <silent>ln <Plug>(ale_next_wrap)
-  nmap <silent>lN <Plug>(ale_previous_wrap)
+  nmap <silent><Leader>n <Plug>(ale_next_wrap)
+  nmap <silent><Leader>N <Plug>(ale_previous_wrap)
 else
   let g:syntastic_ruby_checkers = ['mri', 'rubocop']
   let g:syntastic_aggregate_errors = 1
@@ -237,12 +237,12 @@ else
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
 
-  nnoremap <silent>ln :lne<CR>
-  nnoremap <silent>lN :lNe<CR>
+  nnoremap <silent><Leader>n :lne<CR>
+  nnoremap <silent><Leader>N :lNe<CR>
 endif
 
-nnoremap lo :lop<CR>
-nnoremap lc :lcl<CR>
+nnoremap <silent><Leader>o :lop<CR>
+nnoremap <silent><Leader>O :lcl<CR>
 
 nnoremap <F5> :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle=1
