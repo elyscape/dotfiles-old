@@ -222,7 +222,8 @@ set foldtext=MyFoldText()
 
 if s:use_ale
   let g:ale_fixers={
-  \   'go': ['gofmt'],
+  \   'go': ['goimports', 'gofmt'],
+  \   'sh': ['shfmt'],
   \}
 
   nmap <F8> <Plug>(ale_fix)
