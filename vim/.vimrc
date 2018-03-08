@@ -227,9 +227,6 @@ if s:use_ale
   \}
 
   nmap <F8> <Plug>(ale_fix)
-
-  nmap <silent><Leader>n <Plug>(ale_next_wrap)
-  nmap <silent><Leader>N <Plug>(ale_previous_wrap)
 else
   let g:syntastic_ruby_checkers = ['mri', 'rubocop']
   let g:syntastic_aggregate_errors = 1
@@ -237,10 +234,10 @@ else
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
 
-  nnoremap <silent><Leader>n :lne<CR>
-  nnoremap <silent><Leader>N :lNe<CR>
 endif
 
+nnoremap <silent>]l :try<Bar>lnext<Bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<Bar>42\):/<Bar>lfirst<Bar>endtry<CR>
+nnoremap <silent>[l :try<Bar>lNext<Bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<Bar>42\):/<Bar>llast<Bar>endtry<CR>
 nnoremap <silent><Leader>o :lop<CR>
 nnoremap <silent><Leader>O :lcl<CR>
 
