@@ -236,8 +236,8 @@ else
 
 endif
 
-nnoremap <silent>]l :try<Bar>lnext<Bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<Bar>42\):/<Bar>lfirst<Bar>endtry<CR>
-nnoremap <silent>[l :try<Bar>lNext<Bar>catch /^Vim\%((\a\+)\)\=:E\%(553\<Bar>42\):/<Bar>llast<Bar>endtry<CR>
+nnoremap <silent>]l :try<Bar>lnext<Bar>catch /^Vim\%((\a\+)\)\=:E\%(553\):/<Bar>lfirst<Bar>catch /^Vim\%((\a\+)\)\=:E\%(42\):/<Bar>endtry<CR>
+nnoremap <silent>[l :try<Bar>lNext<Bar>catch /^Vim\%((\a\+)\)\=:E\%(553\):/<Bar>llast<Bar>catch /^Vim\%((\a\+)\)\=:E\%(42\):/<Bar>endtry<CR>
 nnoremap <silent><Leader>o :lop<CR>
 nnoremap <silent><Leader>O :lcl<CR>
 
