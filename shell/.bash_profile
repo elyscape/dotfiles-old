@@ -18,6 +18,8 @@ which rbenv >/dev/null 2>&1 && eval "$( rbenv init - )"
 which pyenv >/dev/null 2>&1 && eval "$( pyenv init - )"
 which pyenv-virtualenv-init >/dev/null 2>&1 && eval "$(pyenv virtualenv-init -)" && export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+[[ -f ~/.iterm2_shell_integration.bash ]] && . ~/.iterm2_shell_integration.bash
+
 export HISTCONTROL=ignoreboth
 export HISTSIZE=-1
 export HISTTIMEFORMAT='%F %T '
