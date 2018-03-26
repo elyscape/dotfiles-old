@@ -8,8 +8,12 @@ if [[ -f "${HOME}/.bashrc.local" ]]; then
 	. "${HOME}/.bashrc.local"
 fi
 
+shopt -s \
+	checkhash \
+	globstar \
+	histappend \
+	no_empty_cmd_completion
 
-shopt -s no_empty_cmd_completion histappend
 set -o ignoreeof
 
 # Allow forward history search with ^S
