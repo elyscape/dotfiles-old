@@ -30,6 +30,12 @@ if hash pyenv-virtualenv-init &>/dev/null; then
 	export VIRTUAL_ENV_DISABLE_PROMPT='1'
 fi
 
+if hash go 2>/dev/null; then
+	GOPATH="$(go env GOPATH)"
+	export GOPATH
+	PATH="${PATH}:$(go env GOPATH)/bin"
+fi
+
 if [[ -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
 	. "${HOME}/.iterm2_shell_integration.bash"
 fi
