@@ -1,77 +1,39 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1090
 
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
+if [[ -f "${HOME}/.bashrc" ]]; then
+	. "${HOME}/.bashrc"
 fi
 
-if [ -f ~/.bash_profile.local ]; then
-  . ~/.bash_profile.local
+if [[ -f "${HOME}/.bash_profile.local" ]]; then
+	. "${HOME}/.bash_profile.local"
 fi
 
-PATH=$PATH:$HOME/bin
+PATH="$PATH:$HOME/bin"
 export PATH
 
-which gvim >/dev/null 2>&1 && EDITOR=gvim\ -f || EDITOR=vim
+if hash gvim &>/dev/null; then
+	EDITOR='gvim -f'
+else
+	EDITOR='vim'
+fi
 export EDITOR
 
-which rbenv >/dev/null 2>&1 && eval "$( rbenv init - )"
-which pyenv >/dev/null 2>&1 && eval "$( pyenv init - )"
-which pyenv-virtualenv-init >/dev/null 2>&1 && eval "$(pyenv virtualenv-init -)" && export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-[[ -f ~/.iterm2_shell_integration.bash ]] && . ~/.iterm2_shell_integration.bash
-
-export HISTCONTROL=ignoreboth
-export HISTSIZE=-1
-export HISTTIMEFORMAT='%F %T '
-
-if [ "$OS" = 'Windows_NT' ]; then
-  # From https://help.github.com/articles/working-with-ssh-key-passphrases/
-  # Note: ~/.ssh/environment should not be used, as it
-  #       already has a different purpose in SSH.
-
-  env=~/.ssh/agent.env
-
-  # Note: Don't bother checking SSH_AGENT_PID. It's not used
-  #       by SSH itself, and it might even be incorrect
-  #       (for example, when using agent-forwarding over SSH).
-
-  agent_is_running() {
-    if [ "$SSH_AUTH_SOCK" ]; then
-      # ssh-add returns:
-      #   0 = agent running, has keys
-      #   1 = agent running, no keys
-      #   2 = agent not running
-      ssh-add -l >/dev/null 2>&1 || [ $? -eq 1 ]
-    else
-      false
-    fi
-  }
-
-  agent_has_keys() {
-    ssh-add -l >/dev/null 2>&1
-  }
-
-  agent_load_env() {
-    . "$env" >/dev/null
-  }
-
-  agent_start() {
-    (umask 077; ssh-agent >"$env")
-    . "$env" >/dev/null
-  }
-
-  if ! agent_is_running; then
-    agent_load_env
-  fi
-
-  # if your keys are not stored in ~/.ssh/id_rsa or ~/.ssh/id_dsa,
-  # you'll need to paste the proper path after ssh-add
-  if ! agent_is_running; then
-    agent_start
-    ssh-add
-  elif ! agent_has_keys; then
-    ssh-add
-  fi
-
-  unset env
+if hash rbenv &>/dev/null; then
+	eval "$(rbenv init -)"
 fi
+if hash pyenv &>/dev/null; then
+	eval "$(pyenv init -)"
+fi
+if hash pyenv-virtualenv-init &>/dev/null; then
+	eval "$(pyenv virtualenv-init -)"
+	export VIRTUAL_ENV_DISABLE_PROMPT='1'
+fi
+
+if [[ -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
+	. "${HOME}/.iterm2_shell_integration.bash"
+fi
+
+export HISTCONTROL='ignoreboth'
+export HISTSIZE='-1'
+export HISTTIMEFORMAT='%F %T '
