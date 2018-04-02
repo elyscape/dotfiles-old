@@ -21,7 +21,14 @@ set -o ignoreeof
 
 if [[ "$(uname -s)" == 'Darwin' ]]; then
 	brew_prefix="$(brew --prefix)"
-	if [[ -f "${brew_prefix}/share/bash-completion/bash_completion" ]]; then
+
+	# If we're running from MacVim, don't bother with completions
+	if [[ "$SHLVL" == '1' ]] && [[ -z "${TERM:-}" ]]; then
+		BASH_COMPLETION_DISABLE=1
+	fi
+
+	if [[ -f "${brew_prefix}/share/bash-completion/bash_completion" ]] &&
+		[[ -z "${BASH_COMPLETION_DISABLE:-}" ]]; then
 		. "${brew_prefix}/share/bash-completion/bash_completion"
 	fi
 
@@ -36,3 +43,5 @@ fi
 if [[ -f "${HOME}/.aliases" ]]; then
 	. "${HOME}/.aliases"
 fi
+
+unset BASH_COMPLETION_DISABLE
