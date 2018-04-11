@@ -282,7 +282,7 @@ set updatetime=200
 let g:NERDSpaceDelims=1
 
 function! DisableUndofileWhenTemp()
-  let tempdirs = [ expand($TEMP), expand($TMP), expand($TMPDIR) ]
+  let tempdirs = [ '/tmp', '/var/tmp', expand($TEMP), expand($TMP), expand($TMPDIR), expand($TEMPDIR), ]
   for tempdir in tempdirs
     if strlen(tempdir) == 0
       continue
