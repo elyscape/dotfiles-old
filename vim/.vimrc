@@ -1,7 +1,9 @@
 if has('win32')
-  let home=escape($HOME, '\')
-  let &rtp = substitute(&rtp, '\V'.home.'/vimfiles', home.'/.vim', 'g')
-  unlet home
+  let s:pattern = '^\V'.escape($HOME, '\').'/vimfiles'
+  let s:rtps = split(&rtp, ',')
+  call map(s:rtps, { key, val -> substitute(val, s:pattern, $HOME.'/.vim', '') })
+  let &rtp = join(s:rtps, ',')
+  unlet s:rtps s:pattern
 endif
 
 set viewdir=~/.vim/view
