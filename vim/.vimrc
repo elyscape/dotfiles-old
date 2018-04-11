@@ -19,7 +19,7 @@ if has('win32') && match($PATH, '\cC:\\Program Files (x86)\\Git\\bin\\\?') == -1
   let $PATH .= ';C:\Program Files (x86)\Git\bin\'
 endif
 
-let s:use_ale = v:version >= 800
+let s:use_ale = (v:version >= 800)
 
 call plug#begin('~/.vim/bundle')
 
@@ -95,20 +95,20 @@ if has('gui_running')
   set lines=40 columns=108 linespace=0
   if has('gui_win32')
     set guifont=Consolas_for_Powerline:h10:cANSI
-    let s:heights=split(system("wmic path Win32_VideoController get CurrentVerticalResolution /value | sed '/=/!d'"))
+    let s:heights = split(system("wmic path Win32_VideoController get CurrentVerticalResolution /value | sed '/=/!d'"))
     for height in s:heights
       if height[26:] != '' && height[26:] >= 1000
         set guifont=Consolas_for_Powerline:h11:cANSI
       endif
     endfor
-    let s:symbols=1
+    let s:symbols = 1
     if has('directx')
       set renderoptions=type:directx,taamode:0,renmode:0
     endif
   endif
   if has('gui_macvim')
     set guifont=Consolas\ for\ Powerline:h11
-    let s:symbols=1
+    let s:symbols = 1
   endif
   if exists('s:symbols')
     let g:airline_symbols = {}
@@ -126,8 +126,8 @@ endif
 if has('win32') && !has('gui_running') && $ConEmuANSI == 'ON'
     set term=xterm
     set t_Co=256
-    let &t_AB="\e[48;5;%dm"
-    let &t_AF="\e[38;5;%dm"
+    let &t_AB = "\e[48;5;%dm"
+    let &t_AF = "\e[38;5;%dm"
 endif
 
 if &t_Co == 256
@@ -173,13 +173,13 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 set viewoptions=folds,cursor,slash,unix
-let g:skipview_files = ['\.vim$', 'vimrc$',
+let g:skipview_files = [ '\.vim$', 'vimrc$',
       \ '\.git[/\\]\(.*[/\\]\)\?COMMIT_EDITMSG$',
       \ '\.git[/\\]\(.*[/\\]\)\?MERGE_MSG$',
       \ '\.git[/\\]\(.*[/\\]\)\?TAG_EDITMSG$',
       \ 'git-rebase-todo$',
       \ '\.diff$',
-      \ '^/private/', '^/tmp/', '[/\\]Temp[/\\]']
+      \ '^/private/', '^/tmp/', '[/\\]Temp[/\\]', ]
 
 set nofoldenable
 set foldmethod=indent
@@ -198,39 +198,39 @@ nnoremap <Leader>z zMzvzz
 nnoremap zO zCzO
 
 function! MyFoldText()
-    let line = getline(v:foldstart)
+    let l:line = getline(v:foldstart)
 
-    redir => signs
+    redir => l:signs
       silent execute 'sign place buffer=' . bufnr('%')
     redir END
-    let signcolwidth = 0
-    if len(split(signs, '\n')) > 2
-      let signcolwidth = 2
+    let l:signcolwidth = 0
+    if len(split(l:signs, '\n')) > 2
+      let l:signcolwidth = 2
     endif
 
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - signcolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
+    let l:nucolwidth = &fdc + &number * &numberwidth
+    let l:windowwidth = winwidth(0) - l:nucolwidth - l:signcolwidth - 3
+    let l:foldedlinecount = v:foldend - v:foldstart
 
     " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
+    let l:onetab = printf('%'.&tabstop.'s', '')
+    let l:line = substitute(l:line, '\t', l:onetab, 'g')
 
-    let line = strpart(line, 0, windowwidth - 2 - len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '… '
+    let l:line = strpart(l:line, 0, l:windowwidth - 2 - len(l:foldedlinecount))
+    let l:fillcharcount = l:windowwidth - len(l:line) - len(l:foldedlinecount)
+    return l:line . '…' . repeat(' ', l:fillcharcount) . l:foldedlinecount . '… '
 endfunction
 set foldtext=MyFoldText()
 
 if s:use_ale
-  let g:ale_fixers={
-  \   'go': ['goimports', 'gofmt'],
-  \   'sh': ['shfmt'],
-  \}
+  let g:ale_fixers = {
+        \   'go': [ 'goimports', 'gofmt', ],
+        \   'sh': [ 'shfmt', ],
+        \ }
 
   nmap <F8> <Plug>(ale_fix)
 else
-  let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+  let g:syntastic_ruby_checkers = [ 'mri', 'rubocop', ]
   let g:syntastic_aggregate_errors = 1
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_check_on_open = 1
@@ -244,12 +244,12 @@ nnoremap <silent><Leader>o :lop<CR>
 nnoremap <silent><Leader>O :lcl<CR>
 
 nnoremap <F5> :UndotreeToggle<CR>
-let g:undotree_SetFocusWhenToggle=1
+let g:undotree_SetFocusWhenToggle = 1
 
 nnoremap <F3> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrows=1
+let g:NERDTreeDirArrows = 1
 
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', '.*\.git[\\/].*EDITMSG']
+let g:EditorConfig_exclude_patterns = [ 'fugitive://.*', '.*\.git[\\/].*EDITMSG', ]
 
 au FileType git* setlocal noundofile
 au FileType gitconfig,sh setlocal noexpandtab listchars+=tab:\ \  shiftwidth=8 tabstop=8
@@ -265,12 +265,12 @@ set relativenumber
 let g:clever_f_smart_case = 1
 
 function! Untab()
-  let curline = getline('.')
-  let curcol = col('.')
-  let curchar = curline[curcol - 1]
-  let prevchar = curline[curcol - 2]
-  if curcol > 1 && (prevchar == " " || prevchar == "\t") ||
-        \(curcol == len(curline) && curchar == " " || curchar == "\t")
+  let l:curline = getline('.')
+  let l:curcol = col('.')
+  let l:curchar = l:curline[l:curcol - 1]
+  let l:prevchar = l:curline[l:curcol - 2]
+  if l:curcol > 1 && (l:prevchar == ' ' || l:prevchar == "\t") ||
+        \ (l:curcol == len(l:curline) && l:curchar == ' ' || l:curchar == "\t")
     call feedkeys("\<BS>")
   endif
 endfunction
@@ -281,17 +281,19 @@ let g:airline#extensions#branch#format = 1
 
 set updatetime=200
 
-let g:NERDSpaceDelims=1
+let g:NERDSpaceDelims = 1
 
 function! DisableUndofileWhenTemp()
-  let tempdirs = [ '/tmp', '/var/tmp', expand($TEMP), expand($TMP), expand($TMPDIR), expand($TEMPDIR), ]
-  for tempdir in tempdirs
-    if strlen(tempdir) == 0
+  let l:tempdirs = [ '/tmp', '/var/tmp',
+        \ expand($TMP), expand($TEMP),
+        \ expand($TMPDIR), expand($TEMPDIR), ]
+  for l:tempdir in l:tempdirs
+    if strlen(l:tempdir) == 0
       continue
     endif
-    let tempdir = resolve(tempdir)
-    let templen = strlen(tempdir) - 1
-    if tempdir ==? resolve(expand('%:p'))[0:templen]
+    let l:tempdir = resolve(l:tempdir)
+    let l:templen = strlen(l:tempdir) - 1
+    if l:tempdir ==? resolve(expand('%:p'))[0:l:templen]
       setlocal noundofile
       setlocal noswapfile
       break
