@@ -173,13 +173,19 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 set viewoptions=folds,cursor,slash,unix
-let g:skipview_files = [ '\.vim$', 'vimrc$',
-      \ '\.git[/\\]\(.*[/\\]\)\?COMMIT_EDITMSG$',
-      \ '\.git[/\\]\(.*[/\\]\)\?MERGE_MSG$',
-      \ '\.git[/\\]\(.*[/\\]\)\?TAG_EDITMSG$',
-      \ 'git-rebase-todo$',
-      \ '\.diff$',
-      \ '^/private/', '^/tmp/', '[/\\]Temp[/\\]', ]
+let g:skipview_files =
+      \ [
+      \   '\.vim$',
+      \   'vimrc$',
+      \   '\.git[/\\]\(.*[/\\]\)\?COMMIT_EDITMSG$',
+      \   '\.git[/\\]\(.*[/\\]\)\?MERGE_MSG$',
+      \   '\.git[/\\]\(.*[/\\]\)\?TAG_EDITMSG$',
+      \   'git-rebase-todo$',
+      \   '\.diff$',
+      \   '^/private/',
+      \   '^/tmp/',
+      \   '[/\\]Temp[/\\]',
+      \ ]
 
 set nofoldenable
 set foldmethod=indent
@@ -223,14 +229,24 @@ endfunction
 set foldtext=MyFoldText()
 
 if s:use_ale
-  let g:ale_fixers = {
-        \   'go': [ 'goimports', 'gofmt', ],
-        \   'sh': [ 'shfmt', ],
+  let g:ale_fixers =
+        \ {
+        \   'go': [
+        \     'goimports',
+        \     'gofmt',
+        \   ],
+        \   'sh': [
+        \     'shfmt',
+        \   ],
         \ }
 
   nmap <F8> <Plug>(ale_fix)
 else
-  let g:syntastic_ruby_checkers = [ 'mri', 'rubocop', ]
+  let g:syntastic_ruby_checkers =
+        \ [
+        \   'mri',
+        \   'rubocop',
+        \ ]
   let g:syntastic_aggregate_errors = 1
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_check_on_open = 1
@@ -249,7 +265,11 @@ let g:undotree_SetFocusWhenToggle = 1
 nnoremap <F3> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows = 1
 
-let g:EditorConfig_exclude_patterns = [ 'fugitive://.*', '.*\.git[\\/].*EDITMSG', ]
+let g:EditorConfig_exclude_patterns =
+      \ [
+      \   'fugitive://.*',
+      \   '.*\.git[\\/].*EDITMSG',
+      \ ]
 
 au FileType git* setlocal noundofile
 au FileType gitconfig,sh setlocal noexpandtab listchars+=tab:\ \  shiftwidth=8 tabstop=8
@@ -284,9 +304,15 @@ set updatetime=200
 let g:NERDSpaceDelims = 1
 
 function! DisableUndofileWhenTemp()
-  let l:tempdirs = [ '/tmp', '/var/tmp',
-        \ expand($TMP), expand($TEMP),
-        \ expand($TMPDIR), expand($TEMPDIR), ]
+  let l:tempdirs =
+        \ [
+        \   '/tmp',
+        \   '/var/tmp',
+        \   expand($TMP),
+        \   expand($TEMP),
+        \   expand($TMPDIR),
+        \   expand($TEMPDIR),
+        \ ]
   for l:tempdir in l:tempdirs
     if strlen(l:tempdir) == 0
       continue
