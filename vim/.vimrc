@@ -269,6 +269,7 @@ let g:EditorConfig_exclude_patterns =
       \ [
       \   'fugitive://.*',
       \   '.*\.git[\\/].*EDITMSG',
+      \   '.*\.git[\\/]config',
       \ ]
 
 au FileType git* setlocal noundofile
