@@ -53,3 +53,5 @@
 	statusHints = false
 [transfer]
 	fsckObjects = true
+[hub]
+	protocol = https
