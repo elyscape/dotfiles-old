@@ -278,7 +278,7 @@ au BufNewFile,BufRead *.git/{,modules/**/}TAG_EDITMSG setlocal textwidth=80
 au FileType diff setlocal noundofile
 au BufNewFile,BufRead *.eyaml setf yaml
 au FileType javascript setlocal foldmethod=syntax
-au FileType go setlocal noexpandtab listchars+=tab:\ \  shiftwidth=4 tabstop=4
+au FileType go,make setlocal noexpandtab listchars+=tab:\ \  shiftwidth=4 tabstop=4
 
 set number
 set relativenumber
