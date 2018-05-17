@@ -24,6 +24,7 @@ let s:use_ale = (v:version >= 800)
 call plug#begin('~/.vim/bundle')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'cespare/vim-toml'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'elyscape/vim-winjumplist'
