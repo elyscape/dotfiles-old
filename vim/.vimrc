@@ -300,6 +300,8 @@ endfunction
 imap <S-Tab> <C-O>:call Untab()<CR>
 
 let g:airline#extensions#branch#format = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
 
 set updatetime=200
 
