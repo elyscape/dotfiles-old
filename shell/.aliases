@@ -7,6 +7,9 @@ fi
 
 alias chmox='chmod'
 
+alias chownme='chown "${USER}:${GROUPS[0]}"'
+alias schownme='sudo chown "${USER}:${GROUPS[0]}"'
+
 alias ga='git add'
 alias gai='git ai'
 alias gap='git ap'
