@@ -1,19 +1,21 @@
+set encoding=utf-8
+scriptencoding utf-8
+
 if has('win32')
   let s:pattern = '^\V'.escape($HOME, '\').'/vimfiles'
-  let s:rtps = split(&rtp, ',')
+  let s:rtps = split(&runtimepath, ',')
   call map(s:rtps, { key, val -> substitute(val, s:pattern, $HOME.'/.vim', '') })
-  let &rtp = join(s:rtps, ',')
+  let &runtimepath = join(s:rtps, ',')
   unlet s:rtps s:pattern
 endif
 
 set viewdir=~/.vim/view
 
-set fo=tcq
+set formatoptions=tcq
 set nocompatible
 set modeline
-set bg=dark
+set background=dark
 set novisualbell
-set encoding=utf-8
 
 if has('win32') && match($PATH, '\cC:\\Program Files (x86)\\Git\\bin\\\?') == -1
   let $PATH .= ';C:\Program Files (x86)\Git\bin\'
@@ -39,22 +41,27 @@ nmap <Leader>pu :PlugUpdate<CR>
 nmap <Leader>pg :PlugUpgrade<CR>
 
 if empty(glob('~/.vim/bundle/*'))
-  aug InstallPlug
-    au!
-    au VimEnter * PlugInstall
-    au VimEnter * source $MYVIMRC
-  aug END
+  augroup InstallPlug
+    autocmd!
+
+    autocmd VimEnter * PlugInstall
+    autocmd VimEnter * source $MYVIMRC
+  augroup END
   finish
 endif
 
 set omnifunc=syntaxcomplete#Complete
-au FileType css setlocal omnifunc=csscomplete#CompleteCSS
-au FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-au FileType python setlocal omnifunc=pythoncomplete#Complete
-au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-au FileType ruby setlocal omnifunc=rubycomplete#Complete
+augroup Completions
+  autocmd!
+
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+augroup END
 
 highlight comment ctermfg=cyan
 
@@ -69,14 +76,14 @@ set keymodel=startsel
 
 if has('gui_running')
   set guioptions-=T   " disable toolbar
-  set bg=light
+  set background=light
   colorscheme kalisi
   set lines=40 columns=108 linespace=0
   if has('gui_win32')
     set guifont=Consolas_for_Powerline:h10:cANSI
     let s:heights = split(system("wmic path Win32_VideoController get CurrentVerticalResolution /value | sed '/=/!d'"))
     for height in s:heights
-      if height[26:] != '' && height[26:] >= 1000
+      if !empty(height[26:]) && height[26:] >= 1000
         set guifont=Consolas_for_Powerline:h11:cANSI
       endif
     endfor
@@ -102,7 +109,7 @@ if has('gui_running')
 endif
 
 " enable 256 colors in ConEmu on Windows
-if has('win32') && !has('gui_running') && $ConEmuANSI == 'ON'
+if has('win32') && !has('gui_running') && $ConEmuANSI ==? 'ON'
     set term=xterm
     set t_Co=256
     let &t_AB = "\e[48;5;%dm"
@@ -193,7 +200,7 @@ function! MyFoldText()
       let l:signcolwidth = 2
     endif
 
-    let l:nucolwidth = &fdc + &number * &numberwidth
+    let l:nucolwidth = &foldcolumn + &number * &numberwidth
     let l:windowwidth = winwidth(0) - l:nucolwidth - l:signcolwidth - 3
     let l:foldedlinecount = v:foldend - v:foldstart
 
@@ -251,13 +258,17 @@ let g:EditorConfig_exclude_patterns =
       \   '.*\.git[\\/]config',
       \ ]
 
-au FileType git* setlocal noundofile
-au FileType gitconfig,sh setlocal noexpandtab listchars+=tab:\ \  shiftwidth=8 tabstop=8
-au BufNewFile,BufRead *.git/{,modules/**/}TAG_EDITMSG setlocal textwidth=80
-au FileType diff setlocal noundofile
-au BufNewFile,BufRead *.eyaml setf yaml
-au FileType javascript setlocal foldmethod=syntax
-au FileType go,make setlocal noexpandtab listchars+=tab:\ \  shiftwidth=4 tabstop=4
+augroup CustomFileHandling
+  autocmd!
+
+  autocmd FileType git* setlocal noundofile
+  autocmd FileType gitconfig,sh setlocal noexpandtab listchars+=tab:\ \  shiftwidth=8 tabstop=8
+  autocmd BufNewFile,BufRead *.git/{,modules/**/}TAG_EDITMSG setlocal textwidth=80
+  autocmd FileType diff setlocal noundofile
+  autocmd BufNewFile,BufRead *.eyaml setf yaml
+  autocmd FileType javascript setlocal foldmethod=syntax
+  autocmd FileType go,make setlocal noexpandtab listchars+=tab:\ \  shiftwidth=4 tabstop=4
+augroup END
 
 set number
 set relativenumber
@@ -269,8 +280,8 @@ function! Untab()
   let l:curcol = col('.')
   let l:curchar = l:curline[l:curcol - 1]
   let l:prevchar = l:curline[l:curcol - 2]
-  if l:curcol > 1 && (l:prevchar == ' ' || l:prevchar == "\t") ||
-        \ (l:curcol == len(l:curline) && l:curchar == ' ' || l:curchar == "\t")
+  if l:curcol > 1 && (l:prevchar ==# ' ' || l:prevchar ==# "\t") ||
+        \ (l:curcol == len(l:curline) && l:curchar ==# ' ' || l:curchar ==# "\t")
     call feedkeys("\<BS>")
   endif
 endfunction
@@ -308,6 +319,10 @@ function! DisableUndofileWhenTemp()
     endif
   endfor
 endfunction
-au BufNewFile,BufRead * call DisableUndofileWhenTemp()
+augroup HandleTempFiles
+  autocmd!
+
+  autocmd BufNewFile,BufRead * call DisableUndofileWhenTemp()
+augroup END
 
 set viminfo+=n~/.viminfo
