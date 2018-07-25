@@ -21,41 +21,13 @@ endif
 
 let s:use_ale = (v:version >= 800)
 
-call plug#begin('~/.vim/bundle')
-
-Plug 'airblade/vim-gitgutter'
-Plug 'cespare/vim-toml'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'elyscape/vim-winjumplist'
-Plug 'freeo/vim-kalisi'
-Plug 'godlygeek/tabular'
-Plug 'kchmck/vim-coffee-script'
-Plug 'mbbill/undotree'
-Plug 'pangloss/vim-javascript'
-Plug 'rhysd/clever-f.vim'
-Plug 'rodjek/vim-puppet'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby'
-Plug 'vim-scripts/matchit.zip'
-Plug 'vim-scripts/restore_view.vim'
 if s:use_ale
-  Plug 'w0rp/ale'
+  call elyscape#plugins#AddPlugin('w0rp/ale')
 else
-  Plug 'vim-syntastic/syntastic'
+  call elyscape#plugins#AddPlugin('vim-syntastic/syntastic')
 endif
 
-call plug#end()
+call elyscape#plugins#ActivatePlugins()
 
 nmap <Leader>pu :PlugUpdate<CR>
 nmap <Leader>pg :PlugUpgrade<CR>
