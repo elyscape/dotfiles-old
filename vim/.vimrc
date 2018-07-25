@@ -29,6 +29,12 @@ endif
 
 call elyscape#plugins#ActivatePlugins()
 
+let s:vimrc_local = expand('<sfile>') . '.local'
+if filereadable(s:vimrc_local)
+  execute 'source ' . fnameescape(s:vimrc_local)
+endif
+unlet s:vimrc_local
+
 nmap <Leader>pu :PlugUpdate<CR>
 nmap <Leader>pg :PlugUpgrade<CR>
 
