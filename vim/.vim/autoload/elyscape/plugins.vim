@@ -28,6 +28,7 @@ endfunction
 function! elyscape#plugins#Reset()
   let s:plugins =
         \ [
+        \   'Vimjas/vim-python-pep8-indent',
         \   'airblade/vim-gitgutter',
         \   'cespare/vim-toml',
         \   'editorconfig/editorconfig-vim',
@@ -51,6 +52,7 @@ function! elyscape#plugins#Reset()
         \   'tpope/vim-surround',
         \   'vim-airline/vim-airline',
         \   'vim-airline/vim-airline-themes',
+        \   'vim-python/python-syntax',
         \   'vim-ruby/vim-ruby',
         \   'vim-scripts/matchit.zip',
         \   'vim-scripts/restore_view.vim',
