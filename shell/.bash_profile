@@ -41,7 +41,7 @@ if [[ -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
 fi
 
 export HISTCONTROL='ignoreboth'
-export HISTTIMEFORMAT='%F %T '
+export HISTTIMEFORMAT='%F %T | '
 
 # Support for negative HISTSIZE values was added in Bash 4.3
 if [[ "${BASH_VERSINFO[0]}" -ge '5' ]] ||
