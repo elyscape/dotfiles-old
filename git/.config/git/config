@@ -25,6 +25,7 @@
 	ap = add -p
 	bd = branch -d
 	bD = branch -D
+	bm = branch -m
 	ca = commit --amend
 	cac = commit --amend -CHEAD
 	cam = commit --amend -m
