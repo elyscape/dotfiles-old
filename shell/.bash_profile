@@ -40,14 +40,3 @@ if [[ -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
 	. "${HOME}/.iterm2_shell_integration.bash"
 fi
 
-export HISTCONTROL='ignoreboth'
-export HISTTIMEFORMAT='%F %T | '
-
-# Support for negative HISTSIZE values was added in Bash 4.3
-if [[ "${BASH_VERSINFO[0]}" -ge '5' ]] ||
-	([[ "${BASH_VERSINFO[0]}" -eq '4' ]] &&
-		[[ "${BASH_VERSINFO[1]}" -gt '2' ]]); then
-	export HISTSIZE='-1'
-else
-	export HISTSIZE='100000'
-fi
