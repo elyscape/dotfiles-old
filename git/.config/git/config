@@ -12,6 +12,7 @@
 	defaultToUpstream = true
 [mergetool]
 	keepTemporaries = false
+	keepBackup = false
 [rebase]
 	autosquash = true
 [push]
