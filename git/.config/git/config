@@ -58,3 +58,7 @@
 	fsckObjects = true
 [hub]
 	protocol = https
+[includeIf "gitdir:~/.vim/bundle/matchit.zip/"]
+	path = vim-plugin-fix/gitconfig
+[includeIf "gitdir:~/.vim/bundle/restore_view.vim/"]
+	path = vim-plugin-fix/gitconfig

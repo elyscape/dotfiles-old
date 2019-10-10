@@ -1,0 +1,2 @@
+[fsck]
+	skipList = ~/.config/git/vim-plugin-fix/skiplist
