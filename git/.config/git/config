@@ -1,19 +1,18 @@
 [user]
-	name = Eli Young
 	email = elyscape@gmail.com
+	name = Eli Young
 [core]
 	editor = vim
 [diff]
-	tool = p4merge
 	indentHeuristic = true
 	mnemonicPrefix = true
-[merge]
 	tool = p4merge
-	keepBackup = false
+[merge]
 	defaultToUpstream = true
+	tool = p4merge
 [mergetool]
-	keepTemporaries = false
 	keepBackup = false
+	keepTemporaries = false
 [rebase]
 	autosquash = true
 [push]
@@ -25,8 +24,8 @@
 [alias]
 	ai = add --intent-to-add
 	ap = add -p
-	bd = branch -d
 	bD = branch -D
+	bd = branch -d
 	bm = branch -m
 	ca = commit --amend
 	cac = commit --amend -CHEAD
