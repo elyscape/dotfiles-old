@@ -16,6 +16,9 @@ else
 	export HISTSIZE='100000'
 fi
 
+PATH="$PATH:$HOME/bin"
+export PATH
+
 if [[ -f /etc/bashrc ]]; then
 	. /etc/bashrc
 fi

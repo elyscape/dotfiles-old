@@ -9,9 +9,6 @@ if [[ -f "${HOME}/.bash_profile.local" ]]; then
 	. "${HOME}/.bash_profile.local"
 fi
 
-PATH="$PATH:$HOME/bin"
-export PATH
-
 if hash gvim &>/dev/null; then
 	EDITOR='gvim -f'
 else
