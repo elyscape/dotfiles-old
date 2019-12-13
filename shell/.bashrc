@@ -46,6 +46,8 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
 
 	if [[ -f "${brew_prefix}/share/bash-completion/bash_completion" ]] &&
 		[[ -z "${BASH_COMPLETION_DISABLE:-}" ]]; then
+		# shellcheck disable=SC2034
+		BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 		. "${brew_prefix}/share/bash-completion/bash_completion"
 	fi
 
