@@ -19,6 +19,7 @@
 	default = upstream
 [fetch]
 	prune = true
+	writeCommitGraph = true
 [log]
 	mailmap = true
 [alias]
