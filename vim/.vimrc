@@ -267,7 +267,7 @@ augroup CustomFileHandling
   autocmd FileType diff setlocal noundofile
   autocmd BufNewFile,BufRead *.eyaml setf yaml
   autocmd FileType javascript setlocal foldmethod=syntax
-  autocmd FileType go,make setlocal noexpandtab listchars+=tab:\ \  tabstop=4
+  autocmd FileType go,make,xml setlocal noexpandtab listchars+=tab:\ \  tabstop=4
   autocmd FileType spec setlocal foldmethod=marker
 augroup END
 
