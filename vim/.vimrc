@@ -68,7 +68,7 @@ highlight comment ctermfg=cyan
 set tabstop=2
 set expandtab
 set softtabstop=-1
-set shiftwidth=2
+set shiftwidth=0
 
 set selection=exclusive
 set selectmode=mouse,key
@@ -262,12 +262,12 @@ augroup CustomFileHandling
   autocmd!
 
   autocmd FileType git* setlocal noundofile
-  autocmd FileType gitconfig,sh setlocal noexpandtab listchars+=tab:\ \  shiftwidth=8 tabstop=8
+  autocmd FileType gitconfig,sh setlocal noexpandtab listchars+=tab:\ \  tabstop=8
   autocmd BufNewFile,BufRead *.git/{,modules/**/}TAG_EDITMSG setlocal textwidth=80
   autocmd FileType diff setlocal noundofile
   autocmd BufNewFile,BufRead *.eyaml setf yaml
   autocmd FileType javascript setlocal foldmethod=syntax
-  autocmd FileType go,make setlocal noexpandtab listchars+=tab:\ \  shiftwidth=4 tabstop=4
+  autocmd FileType go,make setlocal noexpandtab listchars+=tab:\ \  tabstop=4
   autocmd FileType spec setlocal foldmethod=marker
 augroup END
 
