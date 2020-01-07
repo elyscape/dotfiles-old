@@ -9,7 +9,9 @@ if [[ -f "${HOME}/.bash_profile.local" ]]; then
 	. "${HOME}/.bash_profile.local"
 fi
 
-if hash gvim &>/dev/null; then
+if hash gvimf &>/dev/null; then
+	EDITOR='gvimf'
+elif hash gvim &>/dev/null; then
 	EDITOR='gvim -f'
 else
 	EDITOR='vim'
