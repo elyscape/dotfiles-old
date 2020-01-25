@@ -32,7 +32,7 @@ fi
 if hash go 2>/dev/null; then
 	GOPATH="$(go env GOPATH)"
 	export GOPATH
-	PATH="${PATH}:$(go env GOPATH)/bin"
+	PATH="${GOPATH}/bin:${PATH}"
 fi
 
 if [[ -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
