@@ -224,6 +224,9 @@ if s:use_ale
         \   'sh': [
         \     'shfmt',
         \   ],
+        \   'tf': [
+        \     'terraform',
+        \   ],
         \ }
 
   nmap <F8> <Plug>(ale_fix)

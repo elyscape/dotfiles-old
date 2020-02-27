@@ -36,6 +36,7 @@ function! elyscape#plugins#Reset()
         \   'elyscape/vim-winjumplist',
         \   'freeo/vim-kalisi',
         \   'godlygeek/tabular',
+        \   'gurpreetatwal/vim-avro',
         \   'kchmck/vim-coffee-script',
         \   'mbbill/undotree',
         \   'pangloss/vim-javascript',
