@@ -25,8 +25,8 @@
 [alias]
 	ai = add --intent-to-add
 	ap = add -p
-	bD = branch -D
 	bd = branch -d
+	bdd = branch -D
 	bm = branch -m
 	ca = commit --amend
 	cac = commit --amend -CHEAD
