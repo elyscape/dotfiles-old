@@ -24,7 +24,7 @@ endif
 let s:use_ale = (v:version >= 800)
 
 if s:use_ale
-  call elyscape#plugins#AddPlugin('w0rp/ale')
+  call elyscape#plugins#AddPlugin('dense-analysis/ale')
 else
   call elyscape#plugins#AddPlugin('vim-syntastic/syntastic')
 endif
