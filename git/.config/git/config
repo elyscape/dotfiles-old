@@ -17,6 +17,8 @@
 	autosquash = true
 [push]
 	default = upstream
+[pull]
+	ff = only
 [fetch]
 	prune = true
 	writeCommitGraph = true
