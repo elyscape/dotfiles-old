@@ -7,6 +7,8 @@
 	indentHeuristic = true
 	mnemonicPrefix = true
 	tool = p4merge
+[init]
+	defaultBranch = main
 [merge]
 	defaultToUpstream = true
 	tool = p4merge
