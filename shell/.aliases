@@ -74,7 +74,7 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
 	alias start='open'
 	alias pstree='pstree -g 3'
 	alias brwe='brew'
-	alias brewup='brew upgrade'
+	alias brewup='brew upgrade --formula'
 fi
 
 # shellcheck disable=SC2010
