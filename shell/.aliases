@@ -75,6 +75,7 @@ if [[ "$(uname -s)" == 'Darwin' ]]; then
 	alias pstree='pstree -g 3'
 	alias brwe='brew'
 	alias brewup='brew upgrade --formula'
+	alias docker-reclaim='docker run --rm --privileged --pid=host docker/desktop-reclaim-space'
 fi
 
 # shellcheck disable=SC2010
