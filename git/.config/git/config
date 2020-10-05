@@ -35,6 +35,7 @@
 	ca = commit --amend
 	cac = commit --amend -CHEAD
 	cam = commit --amend -m
+	car = commit --amend -CHEAD --reset-author
 	cf = commit --fixup
 	cm = commit -m
 	co = checkout
