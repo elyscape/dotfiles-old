@@ -12,7 +12,6 @@ endif
 set viewdir=~/.vim/view
 
 set formatoptions=tcq
-set nocompatible
 set modeline
 set background=dark
 set novisualbell
@@ -328,5 +327,10 @@ augroup HandleTempFiles
 
   autocmd BufNewFile,BufRead * call DisableUndofileWhenTemp()
 augroup END
+
+if $USER ==# 'root'
+  set nomodeline
+  let g:skipview_files = ['']
+endif
 
 set viminfo+=n~/.viminfo
