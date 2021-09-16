@@ -271,6 +271,7 @@ augroup CustomFileHandling
   autocmd FileType javascript setlocal foldmethod=syntax
   autocmd FileType go,make,xml setlocal noexpandtab listchars+=tab:\ \  tabstop=4
   autocmd FileType spec setlocal foldmethod=marker
+  autocmd FileType sql setlocal tabstop=4
 augroup END
 
 set number
