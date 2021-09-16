@@ -62,7 +62,7 @@ lfile() {
 	local lastfile curfile
 
 	if [[ "$#" -lt '1' ]]; then
-		echo 'usage: lfile command'
+		echo 'Usage: lfile command' >&2
 		return 64
 	fi
 
@@ -77,10 +77,20 @@ lfile() {
 
 if [[ "$(uname -s)" == 'Darwin' ]]; then
 	alias start='open'
-	alias pstree='pstree -g 3'
-	alias brwe='brew'
-	alias brewup='brew upgrade --formula'
-	alias docker-reclaim='docker run --rm --privileged --pid=host docker/desktop-reclaim-space'
+
+	if hash pstree &>/dev/null; then
+		alias pstree='pstree -g 3'
+	fi
+
+	if hash brew &>/dev/null; then
+		alias brwe='brew'
+		alias brewup='brew upgrade --formula'
+	fi
+
+	if hash docker &>/dev/null; then
+		alias docker-reclaim='docker run --rm --privileged --pid=host docker/desktop-reclaim-space'
+		alias docker-host='docker run --rm --privileged --pid=host -it centos:7 nsenter -t 1 -m -u -n -i sh'
+	fi
 fi
 
 # shellcheck disable=SC2010
