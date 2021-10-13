@@ -15,6 +15,7 @@ set formatoptions=tcq
 set modeline
 set background=dark
 set novisualbell
+set nojoinspaces
 
 if has('win32') && match($PATH, '\cC:\\Program Files (x86)\\Git\\bin\\\?') == -1
   let $PATH .= ';C:\Program Files (x86)\Git\bin\'
