@@ -37,26 +37,30 @@ set -o ignoreeof
 [[ "$-" == *i* ]] && stty -ixon
 
 if [[ "$(uname -s)" == 'Darwin' ]]; then
-	brew_prefix="$(brew --prefix)"
+	if hash brew 2>/dev/null; then
+		prefix="$(brew --prefix)"
+	elif hash port 2>/dev/null; then
+		prefix='/opt/local'
+	fi
 
 	# If we're running from MacVim, don't bother with completions
 	if [[ "$SHLVL" == '1' ]] && [[ -z "${TERM:-}" ]]; then
 		BASH_COMPLETION_DISABLE=1
 	fi
 
-	if [[ -f "${brew_prefix}/share/bash-completion/bash_completion" ]] &&
+	if [[ -f "${prefix}/share/bash-completion/bash_completion" ]] &&
 		[[ -z "${BASH_COMPLETION_DISABLE:-}" ]]; then
 		# shellcheck disable=SC2034
-		BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-		. "${brew_prefix}/share/bash-completion/bash_completion"
+		BASH_COMPLETION_COMPAT_DIR="${prefix}/etc/bash_completion.d"
+		. "${prefix}/share/bash-completion/bash_completion"
 	fi
 
-	if [[ -f "${brew_prefix}/opt/nvm/nvm.sh" ]]; then
+	if [[ -f "${prefix}/opt/nvm/nvm.sh" ]]; then
 		export NVM_DIR="${HOME}/.nvm"
-		source "${brew_prefix}/opt/nvm/nvm.sh"
+		source "${prefix}/opt/nvm/nvm.sh"
 		hash npm &>/dev/null && source <(npm completion)
 	fi
-	unset brew_prefix
+	unset prefix
 fi
 
 if [[ -f "${HOME}/.aliases" ]]; then
