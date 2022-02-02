@@ -35,7 +35,10 @@ if hash go 2>/dev/null; then
 	PATH="${GOPATH}/bin:${PATH}"
 fi
 
+# bash-preexec goes here
+# preexec() { printf '\033]0;%s@%s:%s — %s\007' "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}" "${1}" ; }
+# precmd() { printf '\033]0;%s@%s:%s — %s\007' "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}" "${0}" ; }
+
 if [[ -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
 	. "${HOME}/.iterm2_shell_integration.bash"
 fi
-
