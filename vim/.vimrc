@@ -146,8 +146,8 @@ vnoremap <Tab> %
 
 set wrap
 
-nnoremap j gj
-nnoremap k gk
+call elyscape#movement#EnableWrapping()
+nmap <Leader>tw :call elyscape#movement#ToggleWrapping()<CR>
 
 nnoremap ; :
 
